@@ -3,6 +3,7 @@ require.config({
 		cldr: "../external/cldrjs/dist/cldr",
 		"cldr-data": "../external/cldr-data",
 		json: "../external/requirejs-plugins/src/json",
+		messageformat: "../external/messageformat/messageformat",
 		src: "../src",
 		text: "../external/requirejs-text/text"
 	}
@@ -32,9 +33,6 @@ require([
 	"./unit/date/tokenizer",
 
 	"./unit/date/parse",
-
-	// message
-	"./unit/message/translate",
 
 	// number
 	"./unit/number/pattern-properties",
