@@ -32,7 +32,7 @@ QUnit.module( ".formatMessage( path )", {
 				like: [
 					"{count, plural, offset:1",
 						"   =0 {Be the first to like this}",
-						" zero {You liked this}",
+						"   =1 {You liked this}",
 						"  one {You and {someone} liked this}",
 						"other {You and # others liked this}",
 					"}"
@@ -106,6 +106,19 @@ QUnit.test( "should support ICU message format", function( assert ) {
 	}), "Beethoven invites Mozart to his party" );
 
 	// Plural offset
+	assert.equal( Globalize( "en" ).formatMessage( "like", {
+		count: 0
+	}), "Be the first to like this" );
+
+	assert.equal( Globalize( "en" ).formatMessage( "like", {
+		count: 1
+	}), "You liked this" );
+
+	assert.equal( Globalize( "en" ).formatMessage( "like", {
+		count: 2,
+		someone: "Beethoven"
+	}), "You and Beethoven liked this" );
+
 	assert.equal( Globalize( "en" ).formatMessage( "like", {
 		count: 3
 	}), "You and 2 others liked this" );
